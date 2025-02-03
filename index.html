@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google-like Search Bar</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* CSS Variables for Theming */
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #f8f9fa;
+            --border-color: #dfe1e5;
+            --shadow-light: rgba(32, 33, 36, 0.1);
+            --shadow-medium: rgba(32, 33, 36, 0.2);
+            --shadow-heavy: rgba(32, 33, 36, 0.3);
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: var(--secondary-color);
+            font-family: Arial, sans-serif;
+        }
+
+        /* Search Container */
+        .search-container {
+            width: 500px;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        /* Search Input */
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            outline: none;
+            background-color: var(--secondary-color);
+            box-shadow: 0 1px 6px var(--shadow-light);
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .search-input:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 1px 6px var(--shadow-medium);
+        }
+
+        .search-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 1px 6px var(--shadow-heavy);
+        }
+
+        /* Button */
+        .search-button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: var(--primary-color);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-button:hover {
+            background-color: #357ae8;
+        }
+
+        .search-button:active {
+            background-color: #2a66c2;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .search-container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <!-- Search Input -->
+        <input 
+            type="text" 
+            class="search-input" 
+            placeholder="Search Google or type a URL" 
+            aria-label="Search"
+        >
+        <!-- Search Button -->
+        <button class="search-button">Search</button>
+    </div>
+
+    <!-- Optional JavaScript for Keyboard Navigation -->
+    <script>
+        const searchInput = document.querySelector('.search-input');
+        const searchButton = document.querySelector('.search-button');
+
+        // Allow pressing "Enter" to trigger the button
+        searchInput.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                searchButton.click();
+            }
+        });
+
+        // Simulate a search action (for demonstration purposes)
+        searchButton.addEventListener('click', () => {
+            alert(`You searched for: "${searchInput.value}"`);
+        });
+    </script>
+</body>
+</html>
